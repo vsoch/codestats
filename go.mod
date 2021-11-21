@@ -1,4 +1,4 @@
-module github.com/vsoch/org-stats
+module github.com/vsoch/codestats
 
 go 1.13
 

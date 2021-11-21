@@ -3,10 +3,11 @@ package github
 import (
 	"fmt"
 	"github.com/go-git/go-git/v5"
-	"github.com/vsoch/org-stats/utils"
+	"github.com/vsoch/codestats/utils"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 )
 
@@ -74,49 +75,72 @@ func getTests() []func(repo Repository, clone string) Stat {
 }
 
 // Assemble a list of the functions to extract stats for!
-func GetOrgStats(orgName string) []RepoResult {
+func GetRepoStats(repoName string) RepoResult {
+	repo := GetRepo(repoName)
+	directory, err := ioutil.TempDir("", "codestats")
+	utils.CheckIfError(err)
+	defer os.RemoveAll(directory)
+	return getRepoStats(repo, directory)
+}
+
+func getRepoStats(repo Repository, directory string) RepoResult {
+
+	language := repo.Language
+	if language == "null" {
+		language = "?"
+	}
+	result := RepoResult{Name: repo.Name, Stars: repo.StargazersCount,
+		Forks: repo.ForksCount, Issues: repo.OpenIssuesCount,
+		Language: repo.Language, Branch: repo.DefaultBranch,
+		Archived: repo.Archived, CreatedAt: repo.CreatedAt,
+		UpdatedAt: repo.UpdatedAt}
+
+	fmt.Println(repo.Name)
+	fmt.Println()
+
+	// Clone repository to inspect further
+	cloneDir := filepath.Join(directory, filepath.Base(repo.Name))
+
+	_, err := git.PlainClone(cloneDir, false, &git.CloneOptions{
+		URL:               repo.CloneURL,
+		RecurseSubmodules: git.DefaultSubmoduleRecursionDepth,
+	})
+	utils.CheckIfError(err)
+
+	// Test results
+	stats := []Stat{}
+
+	// Load tests
+	for _, test := range getTests() {
+		stats = append(stats, test(repo, cloneDir))
+	}
+
+	result.Stats = stats
+	return result
+}
+
+// Assemble a list of the functions to extract stats for!
+func GetOrgStats(orgName string, pattern string) []RepoResult {
 
 	repos := GetOrgRepos(orgName)
 	results := []RepoResult{}
 
 	// Create temporary directory to work in
-	directory, err := ioutil.TempDir("", "org-stats")
+	directory, err := ioutil.TempDir("", "codestats")
 	utils.CheckIfError(err)
 	defer os.RemoveAll(directory)
 
+	// add gitub token
+	// Just for testing
+	regex, _ := regexp.Compile(pattern)
+
 	for _, repo := range repos {
 
-		language := repo.Language
-		if language == "null" {
-			language = "?"
+		// Don't parse repos that don't match
+		if pattern != "" && !regex.MatchString(repo.Name) {
+			continue
 		}
-		result := RepoResult{Name: repo.Name, Stars: repo.StargazersCount,
-			Forks: repo.ForksCount, Issues: repo.OpenIssuesCount,
-			Language: repo.Language, Branch: repo.DefaultBranch,
-			Archived: repo.Archived, CreatedAt: repo.CreatedAt,
-			UpdatedAt: repo.UpdatedAt}
-
-		fmt.Println(repo.Name)
-
-		// Clone repository to inspect further
-		cloneDir := filepath.Join(directory, filepath.Base(repo.Name))
-		r, err := git.PlainClone(cloneDir, false, &git.CloneOptions{
-			URL:               repo.CloneURL,
-			RecurseSubmodules: git.DefaultSubmoduleRecursionDepth,
-		})
-		utils.CheckIfError(err)
-		fmt.Println(r)
-
-		// Test results
-		stats := []Stat{}
-
-		// Load tests
-		for _, test := range getTests() {
-			stats = append(stats, test(repo, cloneDir))
-		}
-
-		result.Stats = stats
-		results = append(results, result)
+		results = append(results, getRepoStats(repo, directory))
 	}
 	return results
 }

@@ -2,7 +2,7 @@ package github
 
 import (
 	"encoding/json"
-	"github.com/vsoch/org-stats/utils"
+	"github.com/vsoch/codestats/utils"
 	"log"
 )
 
@@ -38,6 +38,23 @@ func GetOrgRepos(orgName string) Repos {
 		log.Fatalf("Issue unmarshalling repositories data structure\n")
 	}
 	return repos
+}
+
+func GetRepo(repoName string) Repository {
+
+	url := "https://api.github.com/repos/" + repoName
+
+	headers := make(map[string]string)
+	headers["Accept"] = "application/vnd.github.v3+json"
+	response := utils.GetRequest(url, headers)
+
+	// The response gets parsed into a spack package
+	repo := Repository{}
+	err := json.Unmarshal([]byte(response), &repo)
+	if err != nil {
+		log.Fatalf("Issue unmarshalling repository data structure\n")
+	}
+	return repo
 }
 
 func GetCommits(name string, branch string) Commits {

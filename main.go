@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/vsoch/org-stats/cli"
+	"github.com/vsoch/codestats/cli"
 )
 
 // Run the containerspec client to extract metadata
