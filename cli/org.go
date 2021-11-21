@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/DataDrake/cli-ng/v2/cmd"
 	"github.com/vsoch/codestats/github"
+	"io/ioutil"
 )
 
 // Args and flags
@@ -14,6 +15,7 @@ type OrgArgs struct {
 type OrgFlags struct {
 	Pretty  bool   `long:"pretty" desc:"If printing to the terminal, print it pretty."`
 	Pattern string `long:"pattern" desc:"Only include repos that match this regular expression."`
+	Outfile string `long:"outfile" desc:"Save output to file."`
 }
 
 var Org = cmd.Sub{
@@ -41,11 +43,15 @@ func RunOrg(r *cmd.Root, c *cmd.Sub) {
 
 	// Parse into json
 	var outJson []byte
-	if flags.Pretty {
+	if flags.Pretty || flags.Outfile != "" {
 		outJson, _ = json.MarshalIndent(results, "", "    ")
 	} else {
 		outJson, _ = json.Marshal(results)
 	}
-	output := string(outJson)
-	fmt.Printf(output)
+
+	if flags.Outfile != "" {
+		_ = ioutil.WriteFile(flags.Outfile, outJson, 0644)
+	} else {
+		fmt.Printf(string(outJson))
+	}
 }

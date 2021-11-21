@@ -25,6 +25,12 @@ This will compile an executable, `codestats` that you can interact with.
 $ ./codestats repo buildsi/build-abi-containers
 ```
 
+You can also save to file:
+
+```bash
+$ ./codestats repo buildsi/build-abi-containers --outfile repo.json
+```
+
 You can also pretty print json:
 
 ```bash
@@ -194,9 +200,7 @@ This will eventually generate json output that we can save and pipe into a web i
 
 ### TODO
 
- - save output to json
  - allow for custom config to specify metrics/stats desired
- - allow to provide GitHub token for use
  - need way to also customize rendering of stats - should go handle the UI generation?
  - should there be a common format for a stat, beyond hard coding? E.g., most seem like checking if something exists - this could be YAML
 

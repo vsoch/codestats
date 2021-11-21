@@ -2,17 +2,26 @@ package github
 
 import (
 	"encoding/json"
-	"github.com/vsoch/codestats/utils"
+	"fmt"
 	"log"
+	"os"
+
+	"github.com/vsoch/codestats/utils"
 )
+
+func githubGetRequest(url string) string {
+	headers := make(map[string]string)
+	token := os.Getenv("GITHUB_TOKEN")
+	headers["Accept"] = "application/vnd.github.v3+json"
+	if token != "" {
+		headers["Authorization"] = fmt.Sprintf("token %s", token)
+	}
+	return utils.GetRequest(url, headers)
+}
 
 func GetReleases(name string) Releases {
 
-	url := "https://api.github.com/repos/" + name + "/releases"
-
-	headers := make(map[string]string)
-	headers["Accept"] = "application/vnd.github.v3+json"
-	response := utils.GetRequest(url, headers)
+	response := githubGetRequest("https://api.github.com/repos/" + name + "/releases")
 
 	// The response gets parsed into a spack package
 	releases := Releases{}
@@ -25,11 +34,7 @@ func GetReleases(name string) Releases {
 
 func GetOrgRepos(orgName string) Repos {
 
-	url := "https://api.github.com/orgs/" + orgName + "/repos"
-
-	headers := make(map[string]string)
-	headers["Accept"] = "application/vnd.github.v3+json"
-	response := utils.GetRequest(url, headers)
+	response := githubGetRequest("https://api.github.com/orgs/" + orgName + "/repos")
 
 	// The response gets parsed into a spack package
 	repos := Repos{}
@@ -42,11 +47,7 @@ func GetOrgRepos(orgName string) Repos {
 
 func GetRepo(repoName string) Repository {
 
-	url := "https://api.github.com/repos/" + repoName
-
-	headers := make(map[string]string)
-	headers["Accept"] = "application/vnd.github.v3+json"
-	response := utils.GetRequest(url, headers)
+	response := githubGetRequest("https://api.github.com/repos/" + repoName)
 
 	// The response gets parsed into a spack package
 	repo := Repository{}
@@ -63,6 +64,10 @@ func GetCommits(name string, branch string) Commits {
 	headers := make(map[string]string)
 	headers["Accept"] = "application/vnd.github.v3+json"
 	headers["Sha"] = branch
+	token := os.Getenv("GITHUB_TOKEN")
+	if token != "" {
+		headers["Authorization"] = fmt.Sprintf("token %s", token)
+	}
 	response := utils.GetRequest(url, headers)
 
 	commits := Commits{}
