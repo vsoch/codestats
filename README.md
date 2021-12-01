@@ -4,6 +4,8 @@ This is a small project that will allow for easily calculating stats for all
 repos across an organization, or a single repository of interest. Other metrics
 could be added for other entities beyond repository health too!
 
+![docs/codestats.png](docs/codestats.png)
+
 🚧️ *under development* 🚧️
 
 
