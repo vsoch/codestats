@@ -1,0 +1,9 @@
+# List of stats to include
+stats:
+- hasCodeowners
+- hasMaintainers
+- hasGitHubActions
+- hasCircle
+- hasTravis
+- hasPullApprove
+- hasGlide

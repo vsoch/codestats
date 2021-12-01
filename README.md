@@ -28,7 +28,7 @@ $ ./codestats repo buildsi/build-abi-containers
 You can also save to file:
 
 ```bash
-$ ./codestats repo buildsi/build-abi-containers --outfile repo.json
+$ ./codestats repo buildsi/build-abi-containers --outfile examples/repo.json
 ```
 
 You can also pretty print json:
@@ -38,7 +38,6 @@ $ go run main.go repo buildsi/build-abi-containers --pretty
 build-abi-containers
 
 {
-    "buildsi/build-abi-containers": {
         "Stats": [
             {
                 "Name": "Has-Codeowners",
@@ -69,9 +68,9 @@ build-abi-containers
                 "Pass": false
             }
         ],
-        "Name": "build-abi-containers",
+        "Name": "buildsi/build-abi-containers",
         "Branch": "main",
-        "Url": "",
+        "Url": "https://github.com/buildsi/build-abi-containers",
         "Stars": 2,
         "Forks": 1,
         "Issues": 3,
@@ -82,6 +81,7 @@ build-abi-containers
     }
 }
 ```
+
 
 ### Organization Stats
 
@@ -106,7 +106,6 @@ $ go run main.go stats buildsi --pattern build-abi-containers --pretty
 build-abi-containers
 build-abi-containers-results
 {
-    "buildsi": [
         {
             "Stats": [
                 {
@@ -138,9 +137,9 @@ build-abi-containers-results
                     "Pass": false
                 }
             ],
-            "Name": "build-abi-containers",
+            "Name": "buildsi/build-abi-containers",
             "Branch": "main",
-            "Url": "",
+            "Url": "https://github.com/buildsi/build-abi-containers",
             "Stars": 2,
             "Forks": 1,
             "Issues": 3,
@@ -180,9 +179,9 @@ build-abi-containers-results
                     "Pass": false
                 }
             ],
-            "Name": "build-abi-containers-results",
+            "Name": "buildsi/build-abi-containers-results",
             "Branch": "main",
-            "Url": "",
+            "Url": "https://github.com/buildsi/build-abi-containers-results",
             "Stars": 1,
             "Forks": 0,
             "Issues": 0,
@@ -191,17 +190,42 @@ build-abi-containers-results
             "CreatedAt": "2021-06-08T23:44:24Z",
             "UpdatedAt": "2021-08-29T14:25:50Z"
         }
-    ]
 }
 ```
 
+or again, save to output file:
 
-This will eventually generate json output that we can save and pipe into a web interface (to be developed).
+```bash
+$ go run main.go org buildsi --outfile examples/org.json
+```
+
+The output file is the same format, so you can use the same visualization code in [docs](docs) for a web interface.
+
+### Customize Stats
+
+For either the org or repo command, you can provide an optional yaml file
+to define a list of stats you want:
+
+```bash
+$ go run main.go repo buildsi/build-abi-containers --config examples/all-stats.yaml 
+```
+
+Or save to output file, perhaps for a web interface!
+
+```bash
+$ go run main.go org buildsi --outfile examples/data.json 
+```
+
+
+### Web Interface
+
+When you generate stats, you can put them in the same directory as the provided [docs](docs)
+to generate a nice interface, which will be organized by type and repository.
+You can see an example at [https://vsoch.github.io/codestats](https://vsoch.github.io/codestats)
 
 ### TODO
 
- - allow for custom config to specify metrics/stats desired
- - need way to also customize rendering of stats - should go handle the UI generation?
+ - add better organization / filtering to results UI
  - should there be a common format for a stat, beyond hard coding? E.g., most seem like checking if something exists - this could be YAML
 
 

@@ -1,0 +1,44 @@
+[
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/build-abi-containers",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/build-abi-containers",
+        "Stars": 2,
+        "Forks": 1,
+        "Issues": 3,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-05-23T20:02:51Z",
+        "UpdatedAt": "2021-10-16T12:37:19Z"
+    }
+]

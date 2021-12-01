@@ -16,6 +16,7 @@ type OrgFlags struct {
 	Pretty  bool   `long:"pretty" desc:"If printing to the terminal, print it pretty."`
 	Pattern string `long:"pattern" desc:"Only include repos that match this regular expression."`
 	Outfile string `long:"outfile" desc:"Save output to file."`
+	Config  string `long:"config" desc:"Provide a config to select metrics."`
 }
 
 var Org = cmd.Sub{
@@ -36,9 +37,9 @@ func RunOrg(r *cmd.Root, c *cmd.Sub) {
 	flags := c.Flags.(*OrgFlags)
 
 	// a lookup of repo results by org
-	results := map[string][]github.RepoResult{}
+	results := []github.RepoResult{}
 	for _, org := range args.Orgs {
-		results[org] = github.GetOrgStats(org, flags.Pattern)
+		results = append(results, github.GetOrgStats(org, flags.Pattern, flags.Config)...)
 	}
 
 	// Parse into json

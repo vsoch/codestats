@@ -15,6 +15,7 @@ type RepoArgs struct {
 type RepoFlags struct {
 	Pretty  bool   `long:"pretty" desc:"If printing to the terminal, print it pretty."`
 	Outfile string `long:"outfile" desc:"Save output to file."`
+	Config  string `long:"config" desc:"Provide a config to select metrics."`
 }
 
 var Repo = cmd.Sub{
@@ -35,9 +36,9 @@ func RunRepo(r *cmd.Root, c *cmd.Sub) {
 	flags := c.Flags.(*RepoFlags)
 
 	// a lookup of repo results by org
-	results := map[string]github.RepoResult{}
+	results := []github.RepoResult{}
 	for _, repo := range args.Repos {
-		results[repo] = github.GetRepoStats(repo)
+		results = append(results, github.GetRepoStats(repo, flags.Config))
 	}
 
 	// Parse into json

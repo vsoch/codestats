@@ -3,6 +3,7 @@ package github
 import (
 	"fmt"
 	"github.com/go-git/go-git/v5"
+	"github.com/vsoch/codestats/config"
 	"github.com/vsoch/codestats/utils"
 	"io/ioutil"
 	"os"
@@ -62,38 +63,63 @@ func exists(dirname string, filename string) bool {
 }
 
 // getTests for different stats depending on the user config
-func getTests() []func(repo Repository, clone string) Stat {
+func getTests(names []string) []func(repo Repository, clone string) Stat {
 	var tests []func(repo Repository, clone string) Stat
-	tests = append(tests, hasCodeowners)
-	tests = append(tests, hasMaintainers)
-	tests = append(tests, hasGitHubActions)
-	tests = append(tests, hasCircle)
-	tests = append(tests, hasTravis)
-	tests = append(tests, hasPullApprove)
-	tests = append(tests, hasGlide)
+
+	// If names is empty, assume all
+	if len(names) == 0 {
+		names = []string{"hasCodeowners", "hasMaintainers", "hasGitHubActions", "hasCircle", "hasTravis", "hasPullApprove", "hasGlide"}
+	}
+	for _, name := range names {
+		switch name {
+		case "hasCodeowners":
+			tests = append(tests, hasCodeowners)
+		case "hasMaintainers":
+			tests = append(tests, hasMaintainers)
+		case "hasGitHubActions":
+			tests = append(tests, hasGitHubActions)
+		case "hasCircle":
+			tests = append(tests, hasCircle)
+		case "hasTravis":
+			tests = append(tests, hasTravis)
+		case "hasPullApprove":
+			tests = append(tests, hasPullApprove)
+		case "hasGlide":
+			tests = append(tests, hasGlide)
+		default:
+			fmt.Println("Warning, unrecognized test %s", name)
+		}
+	}
 	return tests
 }
 
 // Assemble a list of the functions to extract stats for!
-func GetRepoStats(repoName string) RepoResult {
+func GetRepoStats(repoName string, yamlfile string) RepoResult {
 	repo := GetRepo(repoName)
 	directory, err := ioutil.TempDir("", "codestats")
 	utils.CheckIfError(err)
 	defer os.RemoveAll(directory)
-	return getRepoStats(repo, directory)
+	return getRepoStats(repo, directory, yamlfile)
 }
 
-func getRepoStats(repo Repository, directory string) RepoResult {
+func getRepoStats(repo Repository, directory string, yamlFile string) RepoResult {
+
+	// If we have a config, load it to get test preferences
+	choices := []string{}
+	if yamlFile != "" {
+		conf := config.Load(yamlFile)
+		choices = conf.Stats
+	}
 
 	language := repo.Language
 	if language == "null" {
 		language = "?"
 	}
-	result := RepoResult{Name: repo.Name, Stars: repo.StargazersCount,
+	result := RepoResult{Name: repo.FullName, Stars: repo.StargazersCount,
 		Forks: repo.ForksCount, Issues: repo.OpenIssuesCount,
 		Language: repo.Language, Branch: repo.DefaultBranch,
 		Archived: repo.Archived, CreatedAt: repo.CreatedAt,
-		UpdatedAt: repo.UpdatedAt}
+		UpdatedAt: repo.UpdatedAt, Url: repo.HTMLURL}
 
 	fmt.Println(repo.Name)
 	fmt.Println()
@@ -110,8 +136,8 @@ func getRepoStats(repo Repository, directory string) RepoResult {
 	// Test results
 	stats := []Stat{}
 
-	// Load tests
-	for _, test := range getTests() {
+	// Load tests based on user choices
+	for _, test := range getTests(choices) {
 		stats = append(stats, test(repo, cloneDir))
 	}
 
@@ -120,7 +146,7 @@ func getRepoStats(repo Repository, directory string) RepoResult {
 }
 
 // Assemble a list of the functions to extract stats for!
-func GetOrgStats(orgName string, pattern string) []RepoResult {
+func GetOrgStats(orgName string, pattern string, yamlFile string) []RepoResult {
 
 	repos := GetOrgRepos(orgName)
 	results := []RepoResult{}
@@ -130,8 +156,6 @@ func GetOrgStats(orgName string, pattern string) []RepoResult {
 	utils.CheckIfError(err)
 	defer os.RemoveAll(directory)
 
-	// add gitub token
-	// Just for testing
 	regex, _ := regexp.Compile(pattern)
 
 	for _, repo := range repos {
@@ -140,7 +164,7 @@ func GetOrgStats(orgName string, pattern string) []RepoResult {
 		if pattern != "" && !regex.MatchString(repo.Name) {
 			continue
 		}
-		results = append(results, getRepoStats(repo, directory))
+		results = append(results, getRepoStats(repo, directory, yamlFile))
 	}
 	return results
 }
