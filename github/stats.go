@@ -5,10 +5,12 @@ import (
 	"github.com/go-git/go-git/v5"
 	"github.com/vsoch/codestats/config"
 	"github.com/vsoch/codestats/utils"
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 )
 
@@ -56,6 +58,48 @@ func hasGlide(repo Repository, clone string) Stat {
 	return Stat{Name: "Has-Glide", Pass: exists(clone, ".glide.yaml")}
 }
 
+// These can exist anywhere in the repository
+func hasContributing(repo Repository, clone string) Stat {
+	return Stat{Name: "Has-Contributing", Pass: existsRecursive(clone, "CONTRIBUTING")}
+}
+func hasCodeOfConduct(repo Repository, clone string) Stat {
+	return Stat{Name: "Has-Code-Of-Conduct", Pass: existsRecursive(clone, "CODE_OF_CONDUCT")}
+}
+func hasAuthors(repo Repository, clone string) Stat {
+	return Stat{Name: "Has-Authors", Pass: existsRecursive(clone, "AUTHORS")}
+}
+func hasSupport(repo Repository, clone string) Stat {
+	return Stat{Name: "Has-Support.md", Pass: existsRecursive(clone, "SUPPORT")}
+}
+func hasIssueTemplate(repo Repository, clone string) Stat {
+	return Stat{Name: "Has-Issue-Template", Pass: existsRecursive(clone, "ISSUE_TEMPLATE")}
+}
+func hasPullRequestTemplate(repo Repository, clone string) Stat {
+	return Stat{Name: "Has-Pull-Request-Template", Pass: existsRecursive(clone, "PULL_REQUEST_TEMPLATE")}
+}
+func hasSecurity(repo Repository, clone string) Stat {
+	return Stat{Name: "Has-Security", Pass: existsRecursive(clone, "SECURITY")}
+}
+func hasFunding(repo Repository, clone string) Stat {
+	return Stat{Name: "Has-Funding", Pass: existsRecursive(clone, "FUNDING")}
+}
+
+// Determine if a file exists anywhere in a repository, and any casing
+func existsRecursive(root string, pattern string) bool {
+	var exists bool
+	regex, _ := regexp.Compile(strings.ToLower(pattern))
+	filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if err == nil && regex.MatchString(strings.ToLower(info.Name())) {
+			exists = true
+
+			// This allows us to end early
+			return io.EOF
+		}
+		return nil
+	})
+	return exists
+}
+
 // hasFile is a general function to test if a repository root has a file
 func exists(dirname string, filename string) bool {
 	path := filepath.Join(dirname, filename)
@@ -68,45 +112,62 @@ func getTests(names []string) []func(repo Repository, clone string) Stat {
 
 	// If names is empty, assume all
 	if len(names) == 0 {
-		names = []string{"hasCodeowners", "hasMaintainers", "hasGitHubActions", "hasCircle", "hasTravis", "hasPullApprove", "hasGlide"}
+		names = []string{"has-codeowners", "has-maintainers", "has-github-actions", "has-circle", "has-travis", "has-pull-approve", "has-glide", "has-code-of-conduct", "has-contributing", "has-authors", "has-pull-request-template", "has-issue-template", "has-support", "has-funding", "has-security"}
+
 	}
 	for _, name := range names {
 		switch name {
-		case "hasCodeowners":
+		case "has-codeowners":
 			tests = append(tests, hasCodeowners)
-		case "hasMaintainers":
+		case "has-maintainers":
 			tests = append(tests, hasMaintainers)
-		case "hasGitHubActions":
+		case "has-github-actions":
 			tests = append(tests, hasGitHubActions)
-		case "hasCircle":
+		case "has-circle":
 			tests = append(tests, hasCircle)
-		case "hasTravis":
+		case "has-travis":
 			tests = append(tests, hasTravis)
-		case "hasPullApprove":
+		case "has-pull-approve":
 			tests = append(tests, hasPullApprove)
-		case "hasGlide":
+		case "has-glide":
 			tests = append(tests, hasGlide)
+		case "has-code-of-conduct":
+			tests = append(tests, hasCodeOfConduct)
+		case "has-contributing":
+			tests = append(tests, hasContributing)
+		case "has-authors":
+			tests = append(tests, hasAuthors)
+		case "has-pull-request-template":
+			tests = append(tests, hasPullRequestTemplate)
+		case "has-issue-template":
+			tests = append(tests, hasIssueTemplate)
+		case "has-support":
+			tests = append(tests, hasSupport)
+		case "has-funding":
+			tests = append(tests, hasFunding)
+		case "has-security":
+			tests = append(tests, hasSecurity)
+
 		default:
-			fmt.Println("Warning, unrecognized test %s", name)
+			fmt.Println("Warning, unrecognized test", name)
 		}
 	}
 	return tests
 }
 
 // Assemble a list of the functions to extract stats for!
-func GetRepoStats(repoName string, yamlfile string) RepoResult {
+func GetRepoStats(repoName string, yamlfile string, metrics []string) RepoResult {
 	repo := GetRepo(repoName)
 	directory, err := ioutil.TempDir("", "codestats")
 	utils.CheckIfError(err)
 	defer os.RemoveAll(directory)
-	return getRepoStats(repo, directory, yamlfile)
+	return getRepoStats(repo, directory, yamlfile, metrics)
 }
 
-func getRepoStats(repo Repository, directory string, yamlFile string) RepoResult {
+func getRepoStats(repo Repository, directory string, yamlFile string, choices []string) RepoResult {
 
 	// If we have a config, load it to get test preferences
-	choices := []string{}
-	if yamlFile != "" {
+	if yamlFile != "" && len(choices) == 0 {
 		conf := config.Load(yamlFile)
 		choices = conf.Stats
 	}
@@ -122,14 +183,15 @@ func getRepoStats(repo Repository, directory string, yamlFile string) RepoResult
 		UpdatedAt: repo.UpdatedAt, Url: repo.HTMLURL}
 
 	fmt.Println(repo.Name)
-	fmt.Println()
 
 	// Clone repository to inspect further
 	cloneDir := filepath.Join(directory, filepath.Base(repo.Name))
 
+	// Clone at depth 1 to be faster
 	_, err := git.PlainClone(cloneDir, false, &git.CloneOptions{
 		URL:               repo.CloneURL,
 		RecurseSubmodules: git.DefaultSubmoduleRecursionDepth,
+		Depth:             1,
 	})
 	utils.CheckIfError(err)
 
@@ -146,7 +208,7 @@ func getRepoStats(repo Repository, directory string, yamlFile string) RepoResult
 }
 
 // Assemble a list of the functions to extract stats for!
-func GetOrgStats(orgName string, pattern string, yamlFile string) []RepoResult {
+func GetOrgStats(orgName string, pattern string, skipPattern string, yamlFile string, choices []string) []RepoResult {
 
 	repos := GetOrgRepos(orgName)
 	results := []RepoResult{}
@@ -157,14 +219,20 @@ func GetOrgStats(orgName string, pattern string, yamlFile string) []RepoResult {
 	defer os.RemoveAll(directory)
 
 	regex, _ := regexp.Compile(pattern)
+	regexSkip, _ := regexp.Compile(skipPattern)
 
 	for _, repo := range repos {
+
+		// SKip pattern?
+		if skipPattern != "" && regexSkip.MatchString(repo.Name) {
+			continue
+		}
 
 		// Don't parse repos that don't match
 		if pattern != "" && !regex.MatchString(repo.Name) {
 			continue
 		}
-		results = append(results, getRepoStats(repo, directory, yamlFile))
+		results = append(results, getRepoStats(repo, directory, yamlFile, choices))
 	}
 	return results
 }

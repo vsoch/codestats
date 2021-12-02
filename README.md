@@ -6,8 +6,6 @@ could be added for other entities beyond repository health too!
 
 ![docs/codestats.png](docs/codestats.png)
 
-🚧️ *under development* 🚧️
-
 
 ## Usage
 
@@ -39,7 +37,8 @@ You can also pretty print json:
 $ go run main.go repo buildsi/build-abi-containers --pretty
 build-abi-containers
 
-{
+[
+    {
         "Stats": [
             {
                 "Name": "Has-Codeowners",
@@ -68,6 +67,38 @@ build-abi-containers
             {
                 "Name": "Has-Glide",
                 "Pass": false
+            },
+            {
+                "Name": "Has-Code-Of-Conduct",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Contributing",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Authors",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Pull-Request-Template",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Issue-Template",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Support.md",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Funding",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Security",
+                "Pass": false
             }
         ],
         "Name": "buildsi/build-abi-containers",
@@ -81,7 +112,7 @@ build-abi-containers
         "CreatedAt": "2021-05-23T20:02:51Z",
         "UpdatedAt": "2021-10-16T12:37:19Z"
     }
-}
+]
 ```
 
 
@@ -101,10 +132,16 @@ build-sandbox
 ...
 ```
 
+You can also add an optional skip pattern to say - "Don't parse repos that match this regular expression!"
+
+```bash
+$ go run main.go org spack --skip spack-search --output example/spack.json
+```
+
 You can also add an optional pattern to only parse a subset of repos, or add `--pretty` to pretty print the json.
 
 ```bash
-$ go run main.go stats buildsi --pattern build-abi-containers --pretty
+$ go run main.go org buildsi --pattern build-abi-containers --pretty
 build-abi-containers
 build-abi-containers-results
 {
@@ -212,12 +249,24 @@ to define a list of stats you want:
 $ go run main.go repo buildsi/build-abi-containers --config examples/all-stats.yaml 
 ```
 
+There is also an example file with known [GitHub health stats](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file)
+
+```bash
+$ go run main.go repo buildsi/build-abi-containers --config examples/health-stats.yaml
+```
+
 Or save to output file, perhaps for a web interface!
 
 ```bash
 $ go run main.go org buildsi --outfile examples/data.json 
 ```
 
+And finally, if you don't want to use a config file and want a quick run of one or more metrics, ask for them on the fly with `--metric`
+
+```bash
+$ go run main.go repo spack/spack --metric has-code-of-conduct
+$ go run main.go repo spack/spack --metric has-code-of-conduct,has-funding
+```
 
 ### Web Interface
 
@@ -225,10 +274,15 @@ When you generate stats, you can put them in the same directory as the provided 
 to generate a nice interface, which will be organized by type and repository.
 You can see an example at [https://vsoch.github.io/codestats](https://vsoch.github.io/codestats)
 
+### Questions?
+
+So what else would you like to see? Additional stats or interface support? Please [open an issue](https://github.com/vsoch/codestats/issues) and let me know!
+
 ### TODO
 
- - add better organization / filtering to results UI
- - should there be a common format for a stat, beyond hard coding? E.g., most seem like checking if something exists - this could be YAML
+ - GitHub Actions!
+ - Create organization summary metrics (maybe in a second tab?)
+ - IDEA: should there be a common format for a stat, beyond hard coding? E.g., most seem like checking if something exists - this could be YAML
 
 
 ## Previous Art

@@ -10,10 +10,6 @@
                 "Pass": false
             },
             {
-                "Name": "Has-GitHub-Actions",
-                "Pass": true
-            },
-            {
                 "Name": "Has-CircleCI",
                 "Pass": false
             },
@@ -27,6 +23,38 @@
             },
             {
                 "Name": "Has-Glide",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Code-Of-Conduct",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Contributing",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Authors",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Pull-Request-Template",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Issue-Template",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Support.md",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Funding",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Security",
                 "Pass": false
             }
         ],

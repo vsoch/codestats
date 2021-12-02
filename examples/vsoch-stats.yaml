@@ -1,17 +1,9 @@
-# List of stats to include
+# These are the stats I think are most important to have
 stats:
-- has-codeowners
-- has-maintainers
 - has-github-actions
-- has-circle
-- has-travis
-- has-pull-approve
-- has-glide
 - has-code-of-conduct
 - has-contributing
-- has-authors
 - has-pull-request-template
 - has-issue-template
-- has-support
 - has-funding
 - has-security

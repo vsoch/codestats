@@ -1,0 +1,1136 @@
+[
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/build-notes",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/build-notes",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "TeX",
+        "Archived": false,
+        "CreatedAt": "2020-11-28T23:29:28Z",
+        "UpdatedAt": "2021-06-02T19:59:40Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/build-si-modeling",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/build-si-modeling",
+        "Stars": 2,
+        "Forks": 0,
+        "Issues": 2,
+        "Language": "Lua",
+        "Archived": false,
+        "CreatedAt": "2020-12-29T23:33:22Z",
+        "UpdatedAt": "2021-06-02T20:03:28Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/Smeagle",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/Smeagle",
+        "Stars": 2,
+        "Forks": 1,
+        "Issues": 20,
+        "Language": "C++",
+        "Archived": false,
+        "CreatedAt": "2021-05-07T22:39:39Z",
+        "UpdatedAt": "2021-10-28T21:04:23Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/build-abi-tests",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/build-abi-tests",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 9,
+        "Language": "Assembly",
+        "Archived": false,
+        "CreatedAt": "2021-05-18T15:40:49Z",
+        "UpdatedAt": "2021-10-13T22:25:43Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/build-abi-containers",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/build-abi-containers",
+        "Stars": 2,
+        "Forks": 1,
+        "Issues": 3,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-05-23T20:02:51Z",
+        "UpdatedAt": "2021-10-16T12:37:19Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/build-sandbox",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/build-sandbox",
+        "Stars": 1,
+        "Forks": 0,
+        "Issues": 7,
+        "Language": "Go",
+        "Archived": false,
+        "CreatedAt": "2021-06-02T19:48:38Z",
+        "UpdatedAt": "2021-09-29T20:01:19Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/build-abi-containers-results",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/build-abi-containers-results",
+        "Stars": 1,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-06-08T23:44:24Z",
+        "UpdatedAt": "2021-08-29T14:25:50Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/symbolator",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/symbolator",
+        "Stars": 2,
+        "Forks": 0,
+        "Issues": 2,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-06-16T19:40:16Z",
+        "UpdatedAt": "2021-11-09T17:16:56Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/build-abi-test-mathclient",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/build-abi-test-mathclient",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "C++",
+        "Archived": false,
+        "CreatedAt": "2021-06-18T22:16:15Z",
+        "UpdatedAt": "2021-06-18T22:23:06Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/helicase",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/helicase",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-06-22T17:56:44Z",
+        "UpdatedAt": "2021-10-22T18:10:15Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/drift-analysis",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/drift-analysis",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-06-28T18:35:49Z",
+        "UpdatedAt": "2021-10-29T15:05:16Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/drift-server",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/drift-server",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 1,
+        "Language": "Go",
+        "Archived": false,
+        "CreatedAt": "2021-07-04T02:47:32Z",
+        "UpdatedAt": "2021-07-26T19:10:22Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/build-abi-test-ben",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/build-abi-test-ben",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "Makefile",
+        "Archived": false,
+        "CreatedAt": "2021-07-16T21:41:00Z",
+        "UpdatedAt": "2021-07-17T01:13:43Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/drift-builder",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/drift-builder",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-07-20T17:46:43Z",
+        "UpdatedAt": "2021-07-23T19:21:12Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/build-abi-test-tim",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/build-abi-test-tim",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "C",
+        "Archived": false,
+        "CreatedAt": "2021-07-20T23:51:22Z",
+        "UpdatedAt": "2021-07-20T23:52:18Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/smeagle-demo",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/smeagle-demo",
+        "Stars": 1,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-07-21T17:13:55Z",
+        "UpdatedAt": "2021-08-26T15:35:08Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/llvm-bug",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/llvm-bug",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "",
+        "Archived": false,
+        "CreatedAt": "2021-09-19T16:52:01Z",
+        "UpdatedAt": "2021-10-05T17:18:19Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/codegen",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/codegen",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 1,
+        "Language": "Go",
+        "Archived": false,
+        "CreatedAt": "2021-10-02T06:10:57Z",
+        "UpdatedAt": "2021-10-29T17:26:22Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/ldaudit-yaml",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/ldaudit-yaml",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "C++",
+        "Archived": false,
+        "CreatedAt": "2021-10-06T20:45:58Z",
+        "UpdatedAt": "2021-10-09T00:14:23Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/smeagle-asm",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/smeagle-asm",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "Go",
+        "Archived": false,
+        "CreatedAt": "2021-10-13T21:05:23Z",
+        "UpdatedAt": "2021-10-29T19:00:34Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/libabigail-dev",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/libabigail-dev",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "Dockerfile",
+        "Archived": false,
+        "CreatedAt": "2021-10-18T20:18:19Z",
+        "UpdatedAt": "2021-10-18T20:35:30Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/drift-vis",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/drift-vis",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "HTML",
+        "Archived": false,
+        "CreatedAt": "2021-10-22T18:35:49Z",
+        "UpdatedAt": "2021-11-23T17:53:58Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": false
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/compilerops",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/compilerops",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 0,
+        "Language": "Assembly",
+        "Archived": false,
+        "CreatedAt": "2021-10-25T21:04:29Z",
+        "UpdatedAt": "2021-11-26T20:50:26Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/spack-monitor-analysis",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/spack-monitor-analysis",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 2,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-10-30T02:08:11Z",
+        "UpdatedAt": "2021-11-15T07:31:59Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/spack-containers",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/spack-containers",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 2,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-11-10T21:43:37Z",
+        "UpdatedAt": "2021-11-11T16:12:30Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/spack-splices",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/spack-splices",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 1,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-11-13T05:22:41Z",
+        "UpdatedAt": "2021-11-20T18:29:20Z"
+    },
+    {
+        "Stats": [
+            {
+                "Name": "Has-Codeowners",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Maintainers",
+                "Pass": false
+            },
+            {
+                "Name": "Has-GitHub-Actions",
+                "Pass": true
+            },
+            {
+                "Name": "Has-CircleCI",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Travis",
+                "Pass": false
+            },
+            {
+                "Name": "Has-PullApprove",
+                "Pass": false
+            },
+            {
+                "Name": "Has-Glide",
+                "Pass": false
+            }
+        ],
+        "Name": "buildsi/spack-splices-results",
+        "Branch": "main",
+        "Url": "https://github.com/buildsi/spack-splices-results",
+        "Stars": 0,
+        "Forks": 0,
+        "Issues": 1,
+        "Language": "Python",
+        "Archived": false,
+        "CreatedAt": "2021-11-15T17:35:18Z",
+        "UpdatedAt": "2021-12-01T00:26:18Z"
+    }
+]

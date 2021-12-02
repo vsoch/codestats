@@ -1,0 +1,10 @@
+# Health stats known to GitHub
+# https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file
+stats:
+- has-code-of-conduct
+- has-contributing
+- has-pull-request-template
+- has-issue-template
+- has-support
+- has-funding
+- has-security
