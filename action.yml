@@ -1,0 +1,31 @@
+name: 'Codestats Action'
+description: 'Collect basic metrics about repository health and file content.'
+inputs:
+  repository:
+    description: 'Repository to get stats for.'
+    required: false
+  org:
+    description: 'Organization to get stats for'
+    required: false
+  config:
+    description: 'Config file to derive stats from'
+    required: false
+  outfile:
+    description: "Output file to write to (defaults to org.json or repo.json)"
+    required: false
+  metric:
+    description: Instead of a default or config to derive metrics, use this single or comma separated list
+    required: false
+  skip:
+    description: 'Pattern to skip (for org extraction only)'
+    required: false
+  pattern:
+    description: 'Pattern to include (for org extraction only)'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'activity'
+  color: 'white'
