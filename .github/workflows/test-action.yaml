@@ -1,0 +1,41 @@
+name: Codestats Test
+on:
+  pull_request: []
+  push:
+    branches:
+      - main 
+ 
+jobs:
+  extract-repo:
+    runs-on: ubuntu-latest
+    name: Repository Stats
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Codestats for a repository
+        uses: ./
+        with:
+          repository: spack/spack
+          metric: has-code-of-conduct
+          outfile: spack.json
+      - name: View Outfile
+        run: cat spack.json
+
+  extract-org:
+    runs-on: ubuntu-latest
+    name: Org Stats
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Codestats for an organization
+        uses: ./
+        with:
+          org: spack
+          metric: has-code-of-conduct
+          pattern: spack-tutorial
+          outfile: spack-tutorial.json
+      - name: View Outfile
+        run: cat spack-tutorial.json
+
+
+
