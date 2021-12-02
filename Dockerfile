@@ -29,4 +29,4 @@ COPY --from=builder /code/entrypoint.sh /code/entrypoint.sh
 ENV PATH=/code:$PATH
 
 # Command to run the executable
-ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
+ENTRYPOINT ["/bin/sh", "entrypoint.sh"]

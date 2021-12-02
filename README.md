@@ -279,6 +279,50 @@ You can see an example at [https://vsoch.github.io/codestats](https://vsoch.gith
 The repository also serves a GitHub action! You can run extractions with the same variables, for either
 an organization or a repository.
 
+```yaml
+name: Codestats Test
+on:
+  pull_request: []
+  push:
+    branches:
+      - main 
+ 
+jobs:
+  extract-repo:
+    runs-on: ubuntu-latest
+    name: Repository Stats
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Codestats for a repository
+        uses: vsoch/codestats@main
+        with:
+          repository: spack/spack
+          metric: has-code-of-conduct
+          outfile: spack.json
+      - name: View Outfile
+        run: cat spack.json
+
+  extract-org:
+    runs-on: ubuntu-latest
+    name: Org Stats
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Codestats for an organization
+        uses: vsoch/codestats@main
+        with:
+          org: spack
+          metric: has-code-of-conduct
+          pattern: spack-tutorial
+          outfile: spack-tutorial.json
+      - name: View Outfile
+        run: cat spack-tutorial.json
+```
+
+The above is a basic example, for each of a repository and an org, and you can
+see variables in the [action.yml](action.yml). Please don't hesitate to open an issue
+to ask a question or request better documentation.
 
 ### Questions?
 
