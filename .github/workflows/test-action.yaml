@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Repository Stats
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Codestats for a repository
         uses: ./
         with:
@@ -23,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Org Stats
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Codestats for an organization
         uses: ./
         with:

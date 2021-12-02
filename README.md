@@ -274,6 +274,12 @@ When you generate stats, you can put them in the same directory as the provided 
 to generate a nice interface, which will be organized by type and repository.
 You can see an example at [https://vsoch.github.io/codestats](https://vsoch.github.io/codestats)
 
+### GitHub Action
+
+The repository also serves a GitHub action! You can run extractions with the same variables, for either
+an organization or a repository.
+
+
 ### Questions?
 
 So what else would you like to see? Additional stats or interface support? Please [open an issue](https://github.com/vsoch/codestats/issues) and let me know!
