@@ -330,8 +330,6 @@ So what else would you like to see? Additional stats or interface support? Pleas
 
 ### TODO
 
- - GitHub Actions!
- - Create organization summary metrics (maybe in a second tab?)
  - IDEA: should there be a common format for a stat, beyond hard coding? E.g., most seem like checking if something exists - this could be YAML
 
 

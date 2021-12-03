@@ -40,10 +40,11 @@ table.dataTable td {
   font-size: 14px;
 }
 
-th:first-child + th + th,
-td:first-child + td + td {
+#stats-table th:first-child + th + th,
+#stats-table td:first-child + td + td {
   display:none;
 } 
+
 
 tr.group,
 tr.group:hover {
@@ -57,11 +58,24 @@ tr.group:hover {
 <div class="container-wide" style="padding-left:20px; padding-right:20px">
   <h1>Organization Stats</h1>
   <div class="row">
-    <div class="col-md-12">
-      
-<table id="stats-table"  class="table table-bordered table-hover dt-responsive display" cellspacing="0" width="100%">
+    <div class="col-md-12">      
+      <h2 id="summary-title">Summary</h2>
+      <table id="summary-table"  class="table table-bordered table-hover dt-responsive display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Passed</th>
+            <th>Failed</th>
+        </tr>
+     </thead>      
+      </table>
 
-
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">      
+      <h2>Statistics</h2>
+      <table id="stats-table"  class="table table-bordered table-hover dt-responsive display" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>Name</th>
@@ -94,15 +108,41 @@ $(document).ready(function() {
   // Change your data file to be named data.json, or change the name here!
   $.getJSON("data.json", function(data) {
     var items = [];
+    var summary = {"total_repos": 0}
     $.each(data, function(i, repo) {
+        summary['total_repos'] +=1;
+
         $.each(repo["Stats"], function(key, entry) {
             var stat_name = entry["Name"]
             var stat_pass = entry["Pass"]
+            
+            // Keep a summary of each stat
+            if (!(stat_name in summary)) {
+                summary[stat_name] = {"pass": 0, "fail": 0}
+            }
+            if (stat_pass) {
+                summary[stat_name]['pass'] +=1
+            } else {
+                summary[stat_name]['fail'] +=1            
+            }
+            
             items.push({"name": "<a target='_blank' href'" + repo["Url"] +"'>" + repo["Name"] + "</a>", "stat": "<span style='color:white'>"+  stat_name + "</span>", "branch": repo["Branch"], "language": repo["Language"], "stars": repo["Stars"], "forks": repo["Forks"], "issues":  repo['Issues'], "created_at": repo['CreatedAt'], "updated_at": repo["UpdatedAt"], "pass": entry["Pass"]});
         }); 
     });
 
      console.log(items);
+     console.log(summary)
+
+     $("#summary-title").text("Summary: N=" + summary["total_repos"] + " Repos")
+     // Create summary table data, will be name / passes / fails
+     summary_data = []
+     $.each(summary, function(e, i) {
+         if (e != "total_repos") {
+        	summary_data.push({"name": e, "pass": i["pass"], "failed": i["fail"] })  
+         }
+     })     
+     console.log(summary_data);
+     
      var table = $('#stats-table').DataTable({
       data: items,
         "columnDefs": [
@@ -175,6 +215,24 @@ $(document).ready(function() {
            table.column(e).search(term).draw();
         })
      });    
+
+     var summary_table = $('#summary-table').DataTable({
+       data: summary_data,
+       "order": [[ 0, 'asc' ]],
+       columns: [{data: 'name', title: "Name" },
+                 {data: 'pass', title: "Present" },
+                 {data: 'failed', title: "Absent" },
+              ],
+
+        // Color tests by status (pass or fail)
+        "rowCallback": function(row, data) {
+             $('td:eq(1)', row).css('background-color', 'darkgreen').css("color", "white");
+             $('td:eq(2)', row).css('background-color', 'crimson').css("color", "white");
+             if ( data.failed == 0 ) {
+                 $('td:eq(2)', row).css('background-color', 'darkgreen').css("color", "white");
+             }
+        }
+      });
    });
 
 });
